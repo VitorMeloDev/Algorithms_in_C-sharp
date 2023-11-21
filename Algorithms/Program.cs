@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Globalization;
+using System.Runtime.InteropServices;
 
 class Program
 {
     static void Main(string[] args)
     {
-        int[] list = { 2, 3, 5, 6, 7, 10, 11 };
+        int[] list = { 7, 3, 25, 9, 5, 2, 8, 4, 6 };
 
-        BinarySearch.Binary_Search(list, 6);
-        BinarySearch.Binary_Search(list, 1);
+        Console.WriteLine("Lista Ordenada do Maior para Menor: ");
+        SelectionSort.Sort(list, true);
+        SelectionSort.printList(list);
+
+        Console.WriteLine("Lista Ordenada do Menor para o Maior: ");
+        SelectionSort.Sort(list,false);
+        SelectionSort.printList(list);
     }
 }

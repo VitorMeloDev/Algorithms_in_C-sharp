@@ -1,9 +1,10 @@
-﻿using System.Security.Cryptography;
+﻿using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace System
 {
     class BinarySearch
-    {
+    {   
         public static void Binary_Search(int[] list, int obj)
         {
             int low = 0;
@@ -32,6 +33,5 @@ namespace System
 
             Console.WriteLine("The obj doesn't exist!");
         }
-
     }
 }
