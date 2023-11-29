@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using Algorithms.Book_Exercises;
 
 class Program
 {
@@ -8,12 +9,10 @@ class Program
     {
         int[] list = { 7, 3, 25, 9, 5, 2, 8, 4, 6 };
 
-        Console.WriteLine("Lista Ordenada do Maior para Menor: ");
-        SelectionSort.Sort(list, true);
-        SelectionSort.printList(list);
+        Console.WriteLine("List Sum: " + Chapter4Exercises.Sum(list));
+        
+        Console.WriteLine(Chapter4Exercises.TotalItens(list) + " Itens in the list");
 
-        Console.WriteLine("Lista Ordenada do Menor para o Maior: ");
-        SelectionSort.Sort(list,false);
-        SelectionSort.printList(list);
+        Console.WriteLine("Highest Value in the list: " + Chapter4Exercises.HighestValue(list));
     }
 }
