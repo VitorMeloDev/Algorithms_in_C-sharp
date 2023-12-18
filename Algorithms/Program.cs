@@ -7,29 +7,19 @@ class Program
 {
     static void Main(string[] args)
     {
-        Graph g = new Graph(4);
-        g.AddEdge(0, 1);
-        g.AddEdge(0, 2);
-        g.AddEdge(1, 2);
-        g.AddEdge(2, 0);
-        g.AddEdge(2, 3);
-        g.AddEdge(3, 3);
+       Dictionary<char,List<char>>  graph = new Dictionary<char, List<char>>();
 
-        int source = 0;
-        int target = 3;
+        graph['A'] = new List<char> { 'C', 'B' };
+        graph['B'] = new List<char> { 'D'};
+        graph['C'] = new List<char> { 'E' };
+        graph['D'] = new List<char> { 'F'};
+        graph['E'] = new List<char> {};
+        graph['F'] = new List<char> {};
 
-        List<int> path = g.BFS(source, target);
+        Console.WriteLine("DFS: ");
+        Graph.DepthFirstSearch(graph, 'A'); // ABDFCE
 
-        if (path != null)
-        {
-            Console.Write($"Caminho de {source} para {target}: ");
-            foreach (int vertex in path)
-                Console.Write($"{vertex} ");
-            Console.WriteLine();
-        }
-        else
-        {
-            Console.WriteLine($"Não há caminho de {source} para {target}");
-        }
+        Console.WriteLine("BFS: ");
+        Graph.BreadthFirstSearch(graph, 'A'); // ACBEDF
     }
 }
