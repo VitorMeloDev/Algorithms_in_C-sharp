@@ -4,49 +4,47 @@ using System.Collections.Generic;
 
 class Graph
 {
-    // DFS with recursion
+    // DFS with undirected path
     public static void DepthFirstSearch(Dictionary<char, List<char>> graph, char source)
-    {
-        Console.WriteLine(source);
-
-        foreach (char neighbor in graph[source])
-        {
-            DepthFirstSearch(graph, neighbor);
-        }
-    }
-
-    // DFS with Stack
-    public static void DepthFirstSearch2(Dictionary<char, List<char>> graph, char source)
     {
         Stack<char> stack = new Stack<char>();
         stack.Push(source);
+        List<char> visited = new List<char>();
 
         while(stack.Count > 0)
         {
             char current = stack.Pop();
+            if(!visited.Contains(current)) { visited.Add(current); }
+
             Console.WriteLine(current);
 
             foreach(char neighbor in graph[current])
             {
-                stack.Push(neighbor);
+                if (!visited.Contains(neighbor)) 
+                { 
+                    stack.Push(neighbor); visited.Add(neighbor); 
+                }
             }
         }
     }
 
-    // BFS
+    // BFS with undirected path
     public static void BreadthFirstSearch(Dictionary<char, List<char>> graph, char source)
     {
         Queue<char> queue = new Queue<char>();
         queue.Enqueue(source);
+        List<char> visited = new List<char>();
 
         while(queue.Count > 0)
         {
             char current = queue.Dequeue();
+            if(!visited.Contains(current)) { visited.Add(current); }
+
             Console.WriteLine(current);
 
             foreach(char neighbor in graph[current])
             {
-                queue.Enqueue(neighbor);
+                if (!visited.Contains(neighbor)) { queue.Enqueue(neighbor); visited.Add(neighbor); }
             }
         }
     }
@@ -73,16 +71,23 @@ class Graph
     {
         Queue<char> queue = new Queue<char>();
         queue.Enqueue(source);
+        List<char> visited = new List<char>();
 
         while(queue.Count > 0)
         {
             char current = queue.Dequeue();
 
             if (current == destiny) { Console.WriteLine("Has Path!"); return; }
+            
+            if(!visited.Contains(current)) { visited.Add(current);}
 
             foreach(char neighbor in graph[current])
             {
-                queue.Enqueue(neighbor);
+                if (!visited.Contains(neighbor))
+                {
+                    queue.Enqueue(neighbor);
+                    visited.Add(neighbor);
+                }
             }
         }
 

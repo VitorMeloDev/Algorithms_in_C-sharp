@@ -10,11 +10,11 @@ class Program
         Dictionary<char, List<char>> graph = new Dictionary<char, List<char>>();
 
         graph['A'] = new List<char> {'B', 'C' };
-        graph['B'] = new List<char> {'D' };
-        graph['C'] = new List<char> {'E' };
-        graph['D'] = new List<char> {'F' };
-        graph['E'] = new List<char> {};
-        graph['F'] = new List<char> {};
+        graph['B'] = new List<char> {'D', 'E' };
+        graph['C'] = new List<char> {'F' , 'A' };
+        graph['D'] = new List<char> {'B', 'E' };
+        graph['E'] = new List<char> {'B','D','F'};
+        graph['F'] = new List<char> {'C', 'E'};
 
         Console.WriteLine("Depth First Search: ");
         Graph.DepthFirstSearch(graph, 'A');
